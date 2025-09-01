@@ -1,10 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, Text, ScrollView } from 'react-native';
+import jbBase64 from './assets/jb_base64';
 
 export default function App() {
-  const base64Image =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=';
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>1. Static Resource</Text>
@@ -24,11 +22,7 @@ export default function App() {
       />
 
       <Text style={styles.title}>3. Base64 Image</Text>
-      <Image
-        source={{ uri: base64Image }}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={{ uri: jbBase64 }} style={styles.image} />
     </ScrollView>
   );
 }
