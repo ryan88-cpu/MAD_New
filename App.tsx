@@ -1,45 +1,56 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { View, Image, StyleSheet, Text, ScrollView } from 'react-native';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+export default function App() {
+  const base64Image =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=';
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>1. Static Resource</Text>
+      <Image
+        source={require('./assets/unklablogo.png')}
+        style={styles.image}
+        resizeMode="contain"
       />
-    </View>
+
+      <Text style={styles.title}>2. Network Image</Text>
+      <Image
+        source={{
+          uri: 'https://www.unklab.ac.id/wp-content/uploads/2022/12/Edgar-Willem-Melko-Tauran-M.Div-D.Miss_-225x300.jpg',
+        }}
+        style={styles.image}
+        resizeMode="cover"
+      />
+
+      <Text style={styles.title}>3. Base64 Image</Text>
+      <Image
+        source={{ uri: base64Image }}
+        style={styles.image}
+        resizeMode="contain"
+      />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
+    backgroundColor: '#f4f4f4',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  image: {
+    width: 150,
+    height: 150,
+    backgroundColor: '#ddd',
+    borderRadius: 10,
   },
 });
-
-export default App;
