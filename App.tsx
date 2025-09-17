@@ -3,12 +3,16 @@ import React from 'react';
 import Input from './components/input';
 import Button from './components/button';
 const SignIn = () => {
+  const onSignIn = () => {
+    console.log('Button di Klik');
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome</Text>
       <Input label="Username" placeholder="Masukan username anda" />
       <Input label="Password" placeholder="Masukan password anda" />
-      <Button label="Sign In" />
+      <Button label="Sign In" onPress={onSignIn} />
+      <Button label="Create New Account" color="grey" />
       <Button label="Sign in with Google" color="red" />
       <Button label="Sign in with Facebook" color="blue" />
       <Button label="Sign in with Apple" color="black" />
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     padding: 15,
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: 10,
   },
   buttonText: {
     color: 'white',
