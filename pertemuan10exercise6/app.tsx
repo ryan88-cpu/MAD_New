@@ -12,7 +12,7 @@ const Login = () => {
   const [phone, setPhone] = useState('');
 
   const onSignIn = () => {
-    setTitle(`Selamat Datang`);
+    setTitle(`Selamat Datang ${name}`);
 
     console.log('Name:', name);
     console.log('Username:', username);
